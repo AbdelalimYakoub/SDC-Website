@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا – شركة دلتا السعودية</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/contact.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="../styles/rtl.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+  <header class="navbar">
+  <div class="navbar-inner">
+    <div class="logo-container">
+      <img src="../media/logo/single_color_logo.svg" alt="Logo" class="logo-image">
+      <div class="company-name">
+           شركة دلتا السعودية
+           <br>
+         <span class="subtext">لمشاريع الطاقة</span>
+      </div>
+    </div>
+
+    <!-- Hamburger button, shown only below 900px (responsive.css). Toggled via main.js;
+         mirrors to the left side automatically since dir="rtl" reverses flex order. -->
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <ul class="nav-links">
+
+
+        <li><a href="../ar/index.html">الرئيسية</a></li>
+        <li><a href="../ar/about.html">من نحن</a></li>
+        <li><a href="../ar/services.html">الخدمات</a></li>
+        <!-- <li><a href="../ar/projects.html">المشاريع</a></li>   -->
+        <li><a href="../ar/contact.html">اتصل بنا</a></li>
+
+      </ul>
+
+      <div class="language-switch">
+       <a href="../en/contact.html">English</a>
+       <span class="divider">|</span> 
+        <a href="../ar/contact.html" class="active">العربية</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <h1 class="hero-title">تواصل معنا</h1>
+      <p class="hero-subtitle">
+        هل لديك سؤال أو تحتاج لمزيد من المعلومات؟ فريقنا جاهز لمساعدتك.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info -->
+  <section class="contact-section">
+    <div class="container contact-grid">
+      
+      <div class="contact-info">
+        <h2>المكتب الرئيسي</h2>
+        <p>برج توين، المبنى الشمالي، الطابق الثالث</p>
+        <p>شارع وادي الوسطى، العليا</p>
+        <p>ص.ب 295664، الرياض 11351</p>
+        <p>المملكة العربية السعودية</p>
+        <p>البريد الإلكتروني: <a href="mailto:info@deltapower.net">info@deltapower.net</a></p>
+        <p>هاتف: <span dir="ltr">+966 11 462 2849</span></p>
+        <p>فاكس: <span dir="ltr">+966 11 462 2138</span></p>
+      </div>
+
+      <div class="contact-form">
+        <h2>أرسل لنا رسالة</h2>
+        <form action="#" method="post">
+          <label for="name">الاسم</label>
+          <input type="text" id="name" name="name" placeholder="اسمك" required>
+
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" name="email" placeholder="بريدك الإلكتروني" required>
+
+          <label for="subject">الموضوع</label>
+          <input type="text" id="subject" name="subject" placeholder="الموضوع" required>
+
+          <label for="message">الرسالة</label>
+          <textarea id="message" name="message" rows="6" placeholder="اكتب رسالتك هنا..." required></textarea>
+
+          <button type="submit" class="btn-submit"
+          >إرسال</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 شركة دلتا السعودية لمشاريع الطاقة. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

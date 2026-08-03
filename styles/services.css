@@ -1,0 +1,103 @@
+/* =========================================================
+   SERVICES PAGE STYLES (services.html — en + ar)
+   Loaded after styles.css; covers the intro header and the
+   zig-zag list of service rows further down this page.
+   ========================================================= */
+.services-section {
+  padding: 100px 0;
+  background: #f8f9fc;
+}
+
+.services-section .container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===== Services Header ===== */
+.services-header {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+
+.services-title {
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.services-highlight {
+  font-size: clamp(26px, 4.5vw, 48px);
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 18px;
+  line-height: 1.4;
+  position: relative;
+  display: inline-block;
+}
+
+
+.services-description {
+  font-size: clamp(16px, 2vw, 22px);
+  color: #000000;
+  margin-top: 30px;
+}
+
+
+
+.services-section .section-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  font-size: 24px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Service Row — one per service, alternating text/image sides */
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+/* Zig-zag alternation: same technique as .division-row in about.css —
+   flip the grid's direction on even rows to swap column order visually,
+   then force the English text back to ltr so it still reads correctly. */
+.service-row:nth-child(even) {
+  direction: rtl;
+
+}
+
+.service-row:nth-child(even) .service-text {
+  direction: ltr;
+  text-align: left;
+  padding-left: 60px; /* keeps text clear of the now-adjacent image edge */
+}
+
+.service-text h3 {
+  font-size: clamp(26px, 4vw, 48px);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.service-text p {
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.service-image {
+  width: 100%;
+  height: 550px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: var(--shadow-md);
+}

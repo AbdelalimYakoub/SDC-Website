@@ -1,0 +1,812 @@
+/* =========================================================================
+   SAUDI DELTA COMPANY (SDCP) — SITE STYLESHEET
+   Shared styles for every page (navbar, footer, homepage sections).
+   Page-specific styles live in about.css / services.css / contact.css.
+   Breakpoint rules live in responsive.css; Arabic/RTL overrides in rtl.css.
+   ========================================================================= */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Design tokens — reused across styles.css and the page-specific files
+   (about.css / services.css / contact.css) via var(--token-name). */
+:root {
+  --navy: #031d40;
+  --navy-deep: #1E1E2F;
+  --teal: #026773;
+  --ink: #1a1a1a;
+  --muted: #555;
+  --off-white: #FAF9F6;
+  --panel: #f8f9fc;
+  --shadow-sm: 0 4px 16px rgba(3, 29, 64, 0.08);
+  --shadow-md: 0 12px 35px rgba(3, 29, 64, 0.12);
+  --shadow-lg: 0 20px 60px rgba(3, 29, 64, 0.18);
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* prevents iOS Safari from auto-zooming text */
+}
+
+body {
+  background-color: #1E1E2F;
+  font-family: 'Poppins', sans-serif  ;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #DCE5F5;
+  overflow-x: hidden; /* guards against any element accidentally overflowing the viewport width on mobile */
+}
+
+img { max-width: 100%; display: block; }
+
+/* =========================================================
+   NAVIGATION BAR
+   Sticky header shared by every page. On screens ≤900px the
+   inline nav collapses into a dropdown driven by .nav-toggle
+   (see rules below) — behavior lives in responsive.css / main.js.
+========================================================= */
+.navbar {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+  background-color: #FAF9F6;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(3, 29, 64, 0.06);
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1700px;   /* limits width so it looks centered on large screens */ 
+  margin: 0 auto;      /* centers it horizontally */
+  padding: 0px 40px;     /* pushes logo right & nav-links left */
+}
+
+
+.logo-image {
+  height: 75px; /* smaller height */
+  width: auto;  /* maintain aspect ratio */
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+/* .company-name {
+  font-weight: bold;
+  font-size: 22px;
+  color: #031d40;
+  letter-spacing: 0.5px;
+} */
+
+
+.company-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #031d40;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name .subtext {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #031d40; /* soft blue accent or pick a subtle grey */
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+
+nav {
+  flex-grow: 1;
+  text-align: right;
+}
+
+/* Mobile nav toggle (hamburger button).
+   Hidden by default (desktop); responsive.css sets display:flex under
+   900px. Clicking it toggles ".nav-open" on <nav> and ".active" on this
+   button via the JS in main.js, which also flips the three bars into an X. */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #031d40;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-links {
+  list-style: none;
+  display: inline-flex;
+  gap: 30px;
+
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #031d40;
+  font-weight: 500;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+
+.nav-links a:hover {
+  color: #026773;
+}
+
+
+/* Language Switcher in Navbar */
+.language-switch {
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.language-switch a {
+  color: #031d40;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0 4px;
+  transition: color 0.3s ease;
+}
+
+.language-switch a:hover {
+  color: #012e40;
+}
+
+.language-switch .active {
+  font-weight: bold;
+  color: #012e40;
+}
+
+
+.language-switch .divider {
+  color: #031d40; /* dark blue, same as text or adjust as you like */
+  margin: 0 6px;
+  font-weight: 500;
+  opacity: 1; /* optional, for a softer look */
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.language-switch:hover .divider {
+  color: #012e40; /* light blue on hover, optional */
+  opacity: 1;
+}
+
+
+
+
+
+/* Hero Image */
+.hero {
+  margin-top: 80px;
+  width: 100%;
+  height: 70vh;
+  background-image: url('media/hero-placeholder.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+/* =========================================================
+   HOMEPAGE HERO ("About Us" section — the full-bleed image
+   with the "Powering The Growth of Saudi Arabia" headline)
+========================================================= */
+.about-us {
+  position: relative;      /* parent for overlay and video */
+  overflow: hidden;
+  min-height: 92vh;        /* scales with the viewport instead of a fixed pixel height */
+  display: flex;
+  align-items: center;     /* vertically centers the headline over the photo at any screen size */
+  justify-content: center;
+  padding: 140px 20px 100px;
+  text-align: center;
+  background: #1E1E2F;    /* fallback color */
+  color: #DCE5F5;
+}
+
+/* Video behind everything */
+.about-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;             /* below content */
+  pointer-events: none;
+}
+
+.about-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;             /* Keep it behind the text */
+  pointer-events: none;   /* Makes sure it doesn’t interfere with clicks */
+  opacity: 0.5  5;          /* Optional: softens the image for text readability */
+}
+
+/* Overlay layer */
+.about-us::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* semi-transparent dark overlay */
+  z-index: 1;             /* above video but below content */
+}
+
+/* Text container */
+.about-container {
+  position: relative;
+  z-index: 2;             /* top layer */
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* Sharper text */
+/* .about-container h2,
+.about-container p {
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+} */
+
+/* clamp(min, preferred, max) gives fluid type: the font scales smoothly
+   with viewport width between the min/max instead of jumping at fixed
+   breakpoints. Used throughout this file and the page-specific stylesheets
+   for headings/body copy so text never overflows on small screens. */
+.about-container h2 {
+  font-size: clamp(30px, 5.5vw, 55px);
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.about-container p {
+  font-size: clamp(16px, 2.4vw, 30px);
+  font-weight: 300;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+
+
+
+/* ===== Our Business Lines Section ===== */
+.business-lines {
+  background-color: #ffffff; /* dark background */
+  color: #0F111A; /* light text */
+  padding: 80px 20px;
+}
+
+.business-lines h2 {
+  text-align: left;
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #0F111A; /* light blue accent */
+  margin-bottom: 40px;
+}
+
+.business-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 60px;
+  flex-wrap: wrap; /* for responsiveness */
+  /* padding-top: 50px; */
+}
+
+
+.business-text {
+  flex: 1 1 400px; /* text takes at least 400px, grows if space available */
+  font-weight: 300;       /* Light weight for elegance */
+  line-height: 1.5;       /* Makes text airy and readable */
+  letter-spacing: 0.5px;  /* Subtle spacing for elegance */
+  /* color: #000000;         Assuming a dark background   */
+}
+
+.business-text p {
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.7;
+}
+
+
+/* Minimal Underline Button */
+.btn-explore {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;  /* same font */
+  font-weight: 300;                     /* light and elegant */
+  font-size: 21px;
+  color: #0F111A;                       /* adjust for your background */
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;                  /* space for underline */
+  transition: all 0.3s ease;
+}
+
+/* Underline effect on hover */
+.btn-explore::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;           /* thickness of underline */
+  bottom: 0;
+  left: 0;
+  background-color: #0F111A;  /* same color as text */
+  transition: width 0.3s ease;
+}
+
+.btn-explore:hover::after {
+  width: 100%;           /* full underline appears on hover */
+}
+
+
+.business-lines .container {
+  max-width: 1700px;   /* same as navbar max-width */
+  margin: 0 auto;      /* centers container */
+  padding: 0 40px;     /* pushes content away from screen edges */
+}
+
+.business-img {
+  width: 1500px;       /* fill the parent flex width */
+  height: auto;      /* maintain aspect ratio */
+  max-width: 900px;  /* limit max width */
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.business-image {
+  flex: 1 1 400px; /* image takes at least 400px, grows if space available */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================================================
+   GET IN TOUCH — closing CTA band, reused on every page
+========================================================= */
+.get-in-touch {
+  background-color: #ffffff; /* changed from dark to light */
+  color: #1a1a1a; /* dark text for contrast */
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.get-in-touch .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.get-in-touch h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a1a1a; /* ensure title is dark */
+}
+
+.get-in-touch p {
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  color: #555; /* slightly darker grey for readability */
+}
+
+/* Minimal Underline Button for Get in Touch */
+.get-in-touch .btn-contact {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;          /* slightly bolder for clarity */
+  font-size: 21px;
+  color: #0F111A;            /* dark text for light background */
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;       /* space for underline */
+  transition: all 0.3s ease;
+}
+
+/* Underline effect on hover */
+.get-in-touch .btn-contact::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;               /* thickness of underline */
+  bottom: 0;
+  left: 0;
+  background-color: #0F111A; /* same color as text */
+  transition: width 0.3s ease;
+}
+
+.get-in-touch .btn-contact:hover::after {
+  width: 100%;               /* full underline appears on hover */
+}
+
+/* Slider container */
+.slider {
+  position: relative;
+  /* width: 100%; */
+  /* margin: auto; */
+  /* overflow: hidden; */
+
+  width: 900px;       /* fill the parent flex width */
+  height: 500px;      /* maintain aspect ratio */
+  max-width: 900px;  /* limit max width */
+  border-radius: 5px;
+}
+
+/* Slide images */
+.slide {
+  width: 900px;       /* fill the parent flex width */
+  height: 500px;      /* maintain aspect ratio */
+  display: none;
+  object-fit: cover;
+  transition: opacity 0.6s ease;
+  border-radius: 14px;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Positioning */
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+
+
+
+/* =========================================================
+   SERVICES SECTION (homepage grid — links out to services.html)
+========================================================= */
+.services {
+  background: #f8f9fc; /* light neutral background */
+  padding: 120px 20px;
+  text-align: left;
+}
+
+.services-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.services h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 300;
+  color: #1E1E2F;
+  letter-spacing: 1px;
+}
+
+.services-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(15px, 2vw, 21px);
+  color: #1E1E2F;  /* or your text color */
+  margin-bottom: 40px;
+}
+
+
+
+/* Grid for service cards */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 60px;
+}
+
+/* Each card */
+.service-item {
+  position: relative;
+  height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #111;
+}
+
+.service-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+/* Overlay title */
+.service-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 24px;
+  font-size: clamp(19px, 2.5vw, 30px);
+  font-weight: 300;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Hover Effects */
+.service-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.8);
+}
+
+.service-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+}
+
+
+/* =========================================================
+   KEY FIGURES — the "15 years / 1,200 workforce / 250 projects"
+   stat strip. Numbers count up via the JS in main.js, reading
+   each .figure-number's data-target attribute.
+========================================================= */
+.key-figures {
+  background-color: transparent; /* or your section background */
+  color: #ffffff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.key-figures-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.figures-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(26px, 4vw, 38px);
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.figures-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* gap scales down on narrow screens — a fixed 150px gap left a huge
+     empty space once items wrapped onto their own line on mobile */
+  gap: clamp(40px, 8vw, 150px);
+}
+
+.figure-item {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.figure-number {
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.figure-label {
+  font-size: clamp(15px, 1.8vw, 21px);
+  font-weight: 300;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Vertical divider between stats on desktop; responsive.css turns this
+   into a short horizontal rule once .figures-grid stacks on mobile. */
+.divider {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   LOCATIONS — region list + Google Map (map src swaps via
+   the click handler in main.js reading each li's data-map)
+========================================================= */
+.locations {
+  background-color: #f8f9fc;
+  padding: 100px 0;
+  color: #222;
+}
+
+.locations-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+  align-items: start;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.locations-intro {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(22px, 3.2vw, 32px);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+.locations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.locations-list li {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+  color: #555;
+  padding: 10px 0;
+  cursor: pointer;
+  display: block; 
+  position: relative;
+  transition: color 0.3s ease;
+  width: fit-content; /* line matches text width */
+}
+
+/* subtle underline on hover */
+.locations-list li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px; /* consistent base */
+  background-color: #222;
+  transform: scaleY(1.5); /* scale visually to match 1.5px */
+  transform-origin: bottom;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.locations-list li:hover::after {
+  width: 100%; /* matches text width */
+}
+
+.locations-list li:hover {
+  color: #000;
+}
+
+
+.locations-map iframe {
+  width: 100%;
+  height: 550px;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.scroll-down svg.arrow-svg {
+  transition: all 0.3s ease;
+}
+
+.scroll-down svg.arrow-svg:hover circle {
+  stroke-opacity: 0.6; /* Slightly transparent circle on hover */
+}
+
+.scroll-down svg.arrow-svg:hover path {
+  stroke-opacity: 0.6; /* Slightly transparent arrow on hover */
+}
+
+
+#business-lines {
+  scroll-margin-top: 95px; /* offsets the anchor jump so it lands below the sticky navbar, not under it */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   FOOTER — shared across every page
+========================================================= */
+.footer {
+  background-color: #1E1E2F;; /* dark footer */
+  color: #f8f8f8;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+

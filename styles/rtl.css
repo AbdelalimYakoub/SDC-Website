@@ -1,0 +1,160 @@
+/* =========================================================
+   RTL OVERRIDES — Arabic pages only (html[dir="rtl"])
+   Loaded last on every ar/*.html page, after styles.css, the
+   page-specific stylesheet, and responsive.css, so these rules
+   win the cascade. Two jobs: (1) bump a few font sizes since
+   Arabic script reads slightly small at the Latin sizes below,
+   and (2) mirror layout details (alignment, underline direction,
+   zig-zag row order) that don't flip automatically with dir="rtl".
+   ========================================================= */
+
+html[dir="rtl"] .about-container p {
+  font-size: 32px;
+}
+
+html[dir="rtl"] .services-subtitle {
+    font-size: 24px;
+}
+
+html[dir="rtl"] .figure-label {
+    font-size: 24px;
+}
+
+html[dir="rtl"] .locations-list li {
+    font-size: 24px;
+}
+
+html[dir="rtl"] nav {
+  text-align: left;
+}
+
+html[dir="rtl"] .nav-links li {
+  margin-left: 0;
+  margin-right: 20px; /* spacing between items */
+}
+
+html[dir="rtl"] .language-switch {
+  margin-left: 0px;
+  margin-right: 100px;
+}
+
+
+html[dir="rtl"] .services {
+    text-align: right;
+}
+
+/* Base RTL override */
+html[dir="rtl"] .service-title {
+  text-align: right;
+}
+
+html[dir="rtl"] .business-lines h2 {
+    text-align: right;  
+}
+
+
+html[dir="rtl"] .locations-list li::after {
+  left: auto;    /* disable left */
+  right: 0;      /* start from right */
+}
+
+
+html[dir="rtl"] .btn-explore::after {
+  left: auto;    /* disable left */
+  right: 0;      /* start from right */
+}
+
+html[dir="rtl"] .get-in-touch .btn-contact::after {
+  left: auto;    /* disable left */
+  right: 0;      /* start from right */
+}
+
+
+/* Alternate row for zig-zag */
+html[dir="rtl"] .division-row:nth-child(even) {
+  direction: ltr;
+}
+
+html[dir="rtl"] .division-row:nth-child(even) .division-text {
+  text-align: right;
+}
+
+html[dir="rtl"] .division-text p {
+  font-size: 22px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+
+html[dir="rtl"] .who-eyebrow {
+    font-size: 22px;
+}
+
+html[dir="rtl"] .who-text p { 
+    font-size: 24px;
+}
+
+html[dir="rtl"] .divisions-section .section-intro {
+    font-size: 26px;
+}
+
+html[dir="rtl"] .get-in-touch p {
+    font-size: 22px;
+}
+
+html[dir="rtl"] .contact-hero .hero-subtitle {
+    font-size: 25px;
+    max-width: 480px;
+}
+
+html[dir="rtl"] .contact-info p {
+    font-size: 20px;
+}
+
+html[dir="rtl"] .contact-form label {
+    font-size: 18px;
+}
+
+html[dir="rtl"] .service-row:nth-child(even) {
+  direction: ltr;
+}
+
+html[dir="rtl"] .service-row:nth-child(even) .service-text {
+  direction: rtl;
+  text-align: right;
+  padding-right: 60px;
+}
+
+html[dir="rtl"] .services-title {
+    font-size: 26px;
+}
+html[dir="rtl"] .services-description {
+    font-size: 24px;
+}
+
+html[dir="rtl"] .service-text p {
+    font-size: 24px;
+}
+
+/* ===== Mobile nav overrides =====
+   The desktop rules above (.nav-links li margin-right, .language-switch
+   margin-right: 100px) use an [dir="rtl"] attribute selector, which is
+   MORE specific than the plain-class mobile rules in responsive.css —
+   so without this block, those desktop margins would win on mobile too
+   and break the dropdown menu spacing. This block resets them back to
+   the mobile-appropriate values for Arabic pages specifically. */
+@media (max-width: 900px) {
+  html[dir="rtl"] nav {
+    text-align: right;
+  }
+
+  html[dir="rtl"] .nav-links li {
+    margin-right: 0;
+  }
+
+  html[dir="rtl"] .language-switch {
+    margin: 10px 30px 24px;
+  }
+}

@@ -1,0 +1,155 @@
+/* =========================================================
+   ABOUT PAGE STYLES (about.html — en + ar)
+   Loaded after styles.css, so shared rules (navbar, footer,
+   get-in-touch, buttons) already apply; this file only covers
+   the "Who We Are" intro and "Company Divisions" sections.
+   ========================================================= */
+
+/* =========================
+   Company Divisions Section
+========================= */
+.divisions-section {
+  /* padding: 100px 0; */
+  padding-top: 100px;
+  Overflow: hidden; /* contains floated/grid children */
+  background: #f8f9fc;
+}
+
+.divisions-section .container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.divisions-section .section-title {
+  text-align: center;
+  font-size: clamp(26px, 4vw, 36px);
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.divisions-section .section-intro {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  font-size: clamp(16px, 2vw, 24px);
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Division Row */
+.division-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+/* Zig-zag alternation: flipping the grid's own direction on even rows
+   swaps which column (text vs. image) renders first, without touching
+   the HTML markup order. rtl.css mirrors this again for Arabic pages. */
+.division-row:nth-child(even) {
+  direction: rtl;
+}
+
+.division-row:nth-child(even) .division-text {
+  text-align: left;
+}
+
+.division-text h3 {
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.division-text p {
+  font-size: clamp(16px, 2vw, 24px);
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  direction: ltr; /* the English copy must read left-to-right even inside a row flipped rtl for the zig-zag layout */
+}
+
+.division-image {
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   Who We Are Section
+========================= */
+.who-image {
+  height: 480px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center 30%; /* critical */
+  box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cinematic soft overlay */
+.who-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.05)
+  );
+}
+
+
+.who-we-are {
+  padding: 100px 0; /* section wrapper — see .who-image / .who-text below for content styling */
+  background: #ffffff;
+}
+
+.who-container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+
+/* Text */
+.who-text {
+  max-width: 600px;
+}
+
+.who-eyebrow {
+  display: inline-block;
+  font-size: clamp(14px, 1.6vw, 18px);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.who-text h2 {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1a1a1a;
+  margin-bottom: 25px;
+}
+
+.who-text p {
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 18px;
+}
