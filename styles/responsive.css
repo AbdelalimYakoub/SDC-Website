@@ -272,16 +272,22 @@
    Contact Page
 ========================= */
 @media (max-width: 1024px) {
+  /* Switched from CSS Grid to plain block layout for the single-column
+     mobile stack. The grid version (grid-template-columns: 1fr +
+     align-items overrides) sized the .contact-form/.contact-info track
+     inconsistently once nested padding was involved — fine in some
+     browsers, but shrank/misaligned the form card in others (reported
+     on real iOS devices, not reproducible via desktop browser resize).
+     Plain block children always take 100% of the parent's content
+     width with no track-sizing ambiguity, so it sidesteps the bug
+     entirely. gap:40px doesn't apply to block layout, so margin-bottom
+     on .contact-info recreates that spacing instead. */
   .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    /* contact.css sets align-items:start so the two desktop columns'
-       tops line up instead of stretching to equal height. Once the
-       grid collapses to a single column here, that same property
-       controls horizontal alignment instead — shrinking the form card
-       to its content width and pinning it to the left (or right in
-       RTL) instead of spanning the full column. Stretch it back out. */
-    align-items: stretch;
+    display: block;
+  }
+
+  .contact-info {
+    margin-bottom: 40px;
   }
 }
 
