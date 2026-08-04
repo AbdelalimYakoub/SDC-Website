@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // digits (٠-٩) so the numerals stay consistent with the surrounding Arabic
   // copy; English pages keep plain Western digits. Without this, .toLocaleString()
   // falls back to the browser's default locale regardless of page language.
+  // useGrouping: false drops the thousands separator (e.g. 1200, not 1,200).
   const isArabic = document.documentElement.lang === "ar";
   const formatNumber = n =>
-    isArabic ? n.toLocaleString("ar", { numberingSystem: "arab" }) : n.toLocaleString("en-US");
+    isArabic
+      ? n.toLocaleString("ar", { numberingSystem: "arab", useGrouping: false })
+      : n.toLocaleString("en-US", { useGrouping: false });
 
   counters.forEach(counter => {
     const target = +counter.getAttribute("data-target");
