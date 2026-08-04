@@ -84,8 +84,14 @@
         <p>ص.ب ٢٩٥٦٦٤، الرياض ١١٣٥١</p>
         <p>المملكة العربية السعودية</p>
         <p>البريد الإلكتروني: <a href="mailto:info@deltapower.net">info@deltapower.net</a></p>
-        <p>هاتف: <span>+٩٦٦ ١١ ٤٦٢ ٢٨٤٩</span></p>
-        <p>فاكس: <span>+٩٦٦ ١١ ٤٦٢ ٢١٣٨</span></p>
+        <!-- Arabic-Indic digit groups separated by spaces get visually
+             reordered in RTL text (verified against the Unicode bidi
+             algorithm) — dir="ltr" alone doesn't fix it. &lrm; (an
+             invisible left-to-right mark) after each group anchors the
+             correct left-to-right group order without affecting how
+             anything looks. -->
+        <p>هاتف: <span>+٩٦٦&lrm; ١١&lrm; ٤٦٢&lrm; ٢٨٤٩&lrm;</span></p>
+        <p>فاكس: <span>+٩٦٦&lrm; ١١&lrm; ٤٦٢&lrm; ٢١٣٨&lrm;</span></p>
       </div>
 
       <div class="contact-form">
