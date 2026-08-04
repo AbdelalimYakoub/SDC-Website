@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage | SDCP</title>
 
+  <!-- Favicon (cropped from the navbar logo mark) — linked first, before
+       the Google Fonts request and stylesheets, so the browser fetches it
+       immediately on first paint instead of it lagging behind the other
+       network requests (that lag was why the tab icon sometimes only
+       appeared after navigating to another page and back). -->
+  <link rel="icon" href="../media/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../media/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../media/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../media/favicon/apple-touch-icon.png">
+
  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../styles/styles.css">
   <link rel="stylesheet" href="../styles/responsive.css">
   <link rel="stylesheet" href="../styles/rtl.css">
-
-  <!-- Favicon (cropped from the navbar logo mark) -->
-  <link rel="icon" href="../media/favicon/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="../media/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../media/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="../media/favicon/apple-touch-icon.png">
 </head>
 <body>
 
