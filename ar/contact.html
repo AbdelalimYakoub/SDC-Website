@@ -84,14 +84,18 @@
         <p>ص.ب ٢٩٥٦٦٤، الرياض ١١٣٥١</p>
         <p>المملكة العربية السعودية</p>
         <p>البريد الإلكتروني: <a href="mailto:info@deltapower.net">info@deltapower.net</a></p>
-        <!-- Arabic-Indic digit groups separated by spaces get visually
-             reordered in RTL text (verified against the Unicode bidi
-             algorithm) — dir="ltr" alone doesn't fix it. &lrm; (an
-             invisible left-to-right mark) after each group anchors the
-             correct left-to-right group order without affecting how
-             anything looks. -->
-        <p>هاتف: <span>&lrm;+٩٦٦&lrm; ١١&lrm; ٤٦٢&lrm; ٢٨٤٩&lrm;</span></p>
-        <p>فاكس: <span>&lrm;+٩٦٦&lrm; ١١&lrm; ٤٦٢&lrm; ٢١٣٨&lrm;</span></p>
+        <!-- Verified live in Chrome against getBoundingClientRect() per
+             character (dir="ltr"/<bdi>/LRM all failed — Arabic-Indic
+             digit GROUPS get bumped to a higher bidi level than their
+             surroundings per UAX#9 rule I1, so multi-group AN runs get
+             reversed by rule L2 even inside an explicit LTR isolate).
+             The one thing that reliably works: since the browser always
+             reverses this exact group order, writing the groups in
+             reverse in the source (and moving "+" to the end) makes the
+             browser's reversal display them correctly. Counter-intuitive
+             but confirmed correct on this exact markup structure. -->
+        <p>هاتف: <span>٢٨٤٩ ٤٦٢ ١١ ٩٦٦+</span></p>
+        <p>فاكس: <span>٢١٣٨ ٤٦٢ ١١ ٩٦٦+</span></p>
       </div>
 
       <div class="contact-form">
