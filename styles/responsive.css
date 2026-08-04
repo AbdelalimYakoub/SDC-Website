@@ -283,6 +283,45 @@
   }
 }
 
+/* =========================
+   Section vertical padding (mobile)
+   Several full-width sections carry a fixed 80-120px top/bottom padding
+   in styles.css/about.css/services.css, sized for spacious desktop
+   layouts. Left as-is, that padding doesn't shrink with the viewport
+   and reads as large dead empty space above/below each section on
+   phones (reported on both the English and Arabic homepage). Scale
+   it down here instead.
+========================= */
+@media (max-width: 768px) {
+  .business-lines {
+    padding: 50px 20px;
+  }
+
+  .services {
+    padding: 60px 20px;
+  }
+
+  .key-figures {
+    padding: 50px 0;
+  }
+
+  .locations {
+    padding: 60px 0;
+  }
+
+  .who-we-are {
+    padding: 60px 0;
+  }
+
+  .divisions-section {
+    padding-top: 60px;
+  }
+
+  .services-section {
+    padding: 60px 0;
+  }
+}
+
 @media (max-width: 480px) {
   .contact-section {
     padding: 50px 16px;
