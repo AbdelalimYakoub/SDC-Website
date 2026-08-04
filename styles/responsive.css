@@ -129,6 +129,17 @@
     align-items: flex-start;
   }
 
+  /* styles.css sets flex: 1 1 400px on both children as a WIDTH hint for
+     the desktop side-by-side layout. flex-basis is main-axis relative, so
+     once .business-item switches to a column above, that same 400px
+     applies to HEIGHT instead — forcing each box to be at least 400px
+     tall regardless of its actual (much shorter) content, which is what
+     left the large empty gaps below the button and around the photo. */
+  .business-text,
+  .business-image {
+    flex: 1 1 auto;
+  }
+
   .business-image {
     margin-top: 10px;
     width: 100%;
