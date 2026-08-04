@@ -5,23 +5,32 @@
    win the cascade. Two jobs: (1) bump a few font sizes since
    Arabic script reads slightly small at the Latin sizes below,
    and (2) mirror layout details (alignment, underline direction,
-   zig-zag row order) that don't flip automatically with dir="rtl".
+   zig-zag row order) that don't flip automatically with dir="rtl").
+
+   IMPORTANT — every font-size bump below uses clamp(min, vw, max),
+   not a fixed px value. A fixed px here would beat the fluid
+   clamp() sizing in styles.css/about.css/services.css/contact.css
+   (this selector combines an attribute + a class, which out-scores
+   their plain class selectors) at EVERY viewport width, including
+   phones — that was the cause of the oversized, overflowing Arabic
+   hero text on mobile. clamp() keeps the same bumped desktop size
+   while still shrinking gracefully on small screens.
    ========================================================= */
 
 html[dir="rtl"] .about-container p {
-  font-size: 32px;
+  font-size: clamp(18px, 2.6vw, 32px);
 }
 
 html[dir="rtl"] .services-subtitle {
-    font-size: 24px;
+    font-size: clamp(16px, 2.2vw, 24px);
 }
 
 html[dir="rtl"] .figure-label {
-    font-size: 24px;
+    font-size: clamp(15px, 2vw, 24px);
 }
 
 html[dir="rtl"] .locations-list li {
-    font-size: 24px;
+    font-size: clamp(16px, 2.2vw, 24px);
 }
 
 html[dir="rtl"] nav {
@@ -80,7 +89,7 @@ html[dir="rtl"] .division-row:nth-child(even) .division-text {
 }
 
 html[dir="rtl"] .division-text p {
-  font-size: 22px;
+  font-size: clamp(16px, 2vw, 22px);
   color: #555;
   line-height: 1.8;
   margin-bottom: 10px;
@@ -89,32 +98,32 @@ html[dir="rtl"] .division-text p {
 
 
 html[dir="rtl"] .who-eyebrow {
-    font-size: 22px;
+    font-size: clamp(15px, 1.8vw, 22px);
 }
 
-html[dir="rtl"] .who-text p { 
-    font-size: 24px;
+html[dir="rtl"] .who-text p {
+    font-size: clamp(16px, 2vw, 24px);
 }
 
 html[dir="rtl"] .divisions-section .section-intro {
-    font-size: 26px;
+    font-size: clamp(17px, 2.2vw, 26px);
 }
 
 html[dir="rtl"] .get-in-touch p {
-    font-size: 22px;
+    font-size: clamp(16px, 2vw, 22px);
 }
 
 html[dir="rtl"] .contact-hero .hero-subtitle {
-    font-size: 25px;
+    font-size: clamp(16px, 2.4vw, 25px);
     max-width: 480px;
 }
 
 html[dir="rtl"] .contact-info p {
-    font-size: 20px;
+    font-size: clamp(15px, 1.8vw, 20px);
 }
 
 html[dir="rtl"] .contact-form label {
-    font-size: 18px;
+    font-size: clamp(14px, 1.6vw, 18px);
 }
 
 html[dir="rtl"] .service-row:nth-child(even) {
@@ -128,14 +137,14 @@ html[dir="rtl"] .service-row:nth-child(even) .service-text {
 }
 
 html[dir="rtl"] .services-title {
-    font-size: 26px;
+    font-size: clamp(18px, 2.4vw, 26px);
 }
 html[dir="rtl"] .services-description {
-    font-size: 24px;
+    font-size: clamp(16px, 2.2vw, 24px);
 }
 
 html[dir="rtl"] .service-text p {
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, 24px);
 }
 
 /* ===== Mobile nav overrides =====
