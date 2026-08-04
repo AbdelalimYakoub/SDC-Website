@@ -273,7 +273,21 @@
   }
 }
 
+@media (max-width: 768px) {
+  /* contact.css sets a fixed 100px top+bottom padding on .contact-section
+     (sized for a spacious 2-column desktop layout); left untouched, it
+     leaves large empty gaps above "Our Head Office" and below the form
+     card once everything stacks into a single column on mobile. */
+  .contact-section {
+    padding: 60px 20px;
+  }
+}
+
 @media (max-width: 480px) {
+  .contact-section {
+    padding: 50px 16px;
+  }
+
   .contact-form {
     padding: 26px;
   }
