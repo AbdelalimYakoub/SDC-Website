@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll(".figure-number");
   const duration = 2000; // total animation duration in ms
 
+  // On Arabic pages (<html lang="ar">) render the counters with Arabic-Indic
+  // digits (٠-٩) so the numerals stay consistent with the surrounding Arabic
+  // copy; English pages keep plain Western digits. Without this, .toLocaleString()
+  // falls back to the browser's default locale regardless of page language.
+  const isArabic = document.documentElement.lang === "ar";
+  const formatNumber = n =>
+    isArabic ? n.toLocaleString("ar", { numberingSystem: "arab" }) : n.toLocaleString("en-US");
+
   counters.forEach(counter => {
     const target = +counter.getAttribute("data-target");
     const startTime = performance.now();
@@ -21,12 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const animate = (currentTime) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1); // clamp between 0–1
-      counter.textContent = Math.floor(progress * target).toLocaleString();
+      counter.textContent = formatNumber(Math.floor(progress * target));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        counter.textContent = target.toLocaleString(); // ensure final value
+        counter.textContent = formatNumber(target); // ensure final value
       }
     };
 

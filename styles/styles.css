@@ -171,12 +171,36 @@ nav {
   color: #031d40;
   font-weight: 500;
   font-size: 20px;
+  position: relative;   /* anchors the ::after underline bar below */
+  padding-bottom: 6px;  /* reserves space so the underline doesn't crowd the text */
   transition: color 0.3s ease;
 }
 
 
 .nav-links a:hover {
   color: #026773;
+}
+
+/* Underline indicator: a thin bar under the link, hidden by default and
+   revealed on hover. The navbar is position:sticky (stays visible while
+   scrolling), so a.active keeps the underline showing on whichever page
+   the visitor is currently on. */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--teal);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
 }
 
 
