@@ -275,6 +275,13 @@
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+    /* contact.css sets align-items:start so the two desktop columns'
+       tops line up instead of stretching to equal height. Once the
+       grid collapses to a single column here, that same property
+       controls horizontal alignment instead — shrinking the form card
+       to its content width and pinning it to the left (or right in
+       RTL) instead of spanning the full column. Stretch it back out. */
+    align-items: stretch;
   }
 }
 
