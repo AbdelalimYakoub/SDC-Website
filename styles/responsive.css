@@ -180,6 +180,11 @@
 
   .locations-map iframe {
     max-width: 100%;
+    /* The base 550px height (styles.css) is sized for a wide desktop
+       column; without a mobile override it stays 550px tall even once
+       the column shrinks to phone width, leaving a huge slab of empty
+       space above/below the map. Scale it down to match. */
+    height: 380px;
     margin-bottom: 40px;
   }
 
@@ -191,6 +196,12 @@
   .locations-list li::after {
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .locations-map iframe {
+    height: 280px;
   }
 }
 

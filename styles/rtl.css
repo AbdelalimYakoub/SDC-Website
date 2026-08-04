@@ -167,3 +167,27 @@ html[dir="rtl"] .service-text p {
     margin: 10px 30px 24px;
   }
 }
+
+/* ===== Mobile zig-zag override (Company Divisions + Services rows) =====
+   responsive.css collapses these grids to a single column below 1024px
+   and forces direction:ltr on EVERY row (the desktop zig-zag column swap
+   is no longer needed once there's only one column). But the RTL
+   text-align fix above only targets even rows via :nth-child(even) and
+   isn't media-query gated, so it keeps winning for even rows on mobile
+   while odd rows fall through to the row's now-ltr direction and render
+   left-aligned by default. Net effect: Arabic body text alternated
+   left/right down the page on mobile, mimicking the desktop zig-zag
+   instead of reading uniformly right-aligned. Force every row back to
+   rtl/right here, and drop the even-row padding that existed to clear
+   the adjacent image in the (now gone) two-column layout. */
+@media (max-width: 1024px) {
+  html[dir="rtl"] .division-text,
+  html[dir="rtl"] .service-text {
+    direction: rtl;
+    text-align: right;
+  }
+
+  html[dir="rtl"] .service-row:nth-child(even) .service-text {
+    padding-right: 0;
+  }
+}
